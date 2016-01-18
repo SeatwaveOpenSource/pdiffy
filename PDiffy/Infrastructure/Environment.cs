@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using System.Configuration;
+using Microsoft.Win32;
 
 namespace PDiffy.Infrastructure
 {
@@ -46,5 +47,18 @@ namespace PDiffy.Infrastructure
             using (var envKey = Registry.LocalMachine.OpenSubKey(SubKeyPath, true))
                 if (envKey != null) envKey.SetValue(name, value);
         }
+
+		private static double _expiryDurationInHours;
+		public static double ExpiryDurationInHours
+		{
+			get
+			{
+				if (_expiryDurationInHours > 0) return _expiryDurationInHours;
+
+				double.TryParse(ConfigurationManager.AppSettings["ExpiryDurationInHours"], out _expiryDurationInHours);
+
+				return (_expiryDurationInHours <= 0) ? _expiryDurationInHours = 72 : _expiryDurationInHours;
+			}
+		}
     }
 }

@@ -27,33 +27,25 @@ namespace PDiffy.Features.ImageComparisons
 			using (var streamReader = new StreamReader(requestStream, Encoding.Unicode, true))
 				requestBody = streamReader.ReadToEnd();
 
-			var body = new JavaScriptSerializer().Deserialize<Body>(requestBody);
+			var body = new JavaScriptSerializer().Deserialize<ApiRequestBody>(requestBody);
 
-			if (string.IsNullOrEmpty(body.name))
+			if (string.IsNullOrEmpty(body.Name))
 				return BadRequest();
 
 			Bitmap image;
-			using (var ms = new MemoryStream(body.content))
+			using (var ms = new MemoryStream(body.Content))
 				image = new Bitmap(ms);
 			
 			await _mediator.SendAsync(
 				new Image.Command
 				{
-					Name = body.name,
-					Page = body.page,
-					Site = body.site,
+					Name = body.Name,
+					Page = body.Page,
+					Site = body.Site,
 					Image = image
 				});
 
 			return Ok();
-		}
-
-		[HttpGet]
-		public async Task<JsonResult<Status>> Update(string name, string imageUrl)
-		{
-			await _mediator.SendAsync(new WebImage.Command { Name = name, Url = imageUrl });
-
-			return Json(Status.Ok);
 		}
 	}
 }

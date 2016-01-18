@@ -25,18 +25,18 @@ namespace PDiffy.Features.TextComparisons
 			using (var streamReader = new StreamReader(requestStream, Encoding.Unicode, true))
 				requestBody = streamReader.ReadToEnd();
 
-			var body = new JavaScriptSerializer().Deserialize<Body>(requestBody);
+			var body = new JavaScriptSerializer().Deserialize<ApiRequestBody>(requestBody);
 
-			if (string.IsNullOrEmpty(body.name))
+			if (string.IsNullOrEmpty(body.Name))
 				return BadRequest();
 
 			await _mediator.SendAsync(
 				new Text.Command
 				{
-					Name = body.name,
-					Page = body.page,
-					Site = body.site,
-					Text = Encoding.Unicode.GetString(body.content)
+					Name = body.Name,
+					Page = body.Page,
+					Site = body.Site,
+					Text = Encoding.Unicode.GetString(body.Content)
 				});
 
 			return Ok();

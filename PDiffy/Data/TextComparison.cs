@@ -15,9 +15,9 @@ namespace PDiffy.Data
 		[Key]
 		public string Page { get; set; }
 		[Key]
-		public string Site { get; set; } 
+		public string Site { get; set; }
 
-		public bool ComparisonStillValid { get { return LastComparisonDate != null && LastComparisonDate > SystemTime.Now.AddHours(-72); } }
+		public bool ComparisonStillValid { get { return LastComparisonDate != null && LastComparisonDate > SystemTime.Now.AddHours(Infrastructure.Environment.ExpiryDurationInHours); } }
 		public DateTime? LastComparisonDate { get; set; }
 		public bool HumanComparisonRequired { get; set; }
 

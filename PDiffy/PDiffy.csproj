@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Data\Biggy.cs" />
+    <Compile Include="Data\Stores\IImageStore.cs" />
     <Compile Include="Data\TextComparison.cs" />
     <Compile Include="ErrorController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -197,6 +198,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Features\ImageViewer\OriginalImage.cs" />
+    <Compile Include="Features\Shared\ApiRequestBody.cs" />
     <Compile Include="Features\TextComparisons\TextComparisonsController.cs" />
     <Compile Include="Features\TextComparisons\Text.cs" />
     <Compile Include="Features\ImageComparisons\Image.cs" />
@@ -228,8 +230,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Features\History\HistoricalImage.cs" />
-    <Compile Include="Data\Stores\ImageStore.cs" />
-    <Compile Include="Features\Shared\Status.cs" />
+    <Compile Include="Data\Stores\FileImageStore.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

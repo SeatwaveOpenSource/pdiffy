@@ -50,11 +50,11 @@ namespace PDiffy.Features.History
 			public async Task<Result> Handle(Query message)
 			{
 				var comparison = Data.Biggy.ImageComparisons.Single(x => x.Name == message.Name && x.Page == message.Page && x.Site == message.Site);
-
+				
 				var result = new Result
 				{
 					Name = comparison.Name,
-					Page = comparison.Page, 
+					Page = comparison.Page,
 					Site = comparison.Site,
 					LastComparisonDate = comparison.LastComparisonDate,
 					ComparisonStillValid = comparison.ComparisonStillValid,

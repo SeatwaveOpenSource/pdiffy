@@ -8,7 +8,7 @@ using Environment = PDiffy.Infrastructure.Environment;
 
 namespace PDiffy.Data.Stores
 {
-	public class ImageStore : IImageStore
+	public class FileImageStore : IImageStore
 	{
 		public string Save(System.Drawing.Image image, string name, string type)
 		{
@@ -40,7 +40,7 @@ namespace PDiffy.Data.Stores
 
 		public string[] Get(string name, string imageType)
 		{
-			//2e70726f6d6f2e6d61747269782e74776f6c696e65733e68322e64696666.20160107-145147.4123.png
+			//Note: Example filename w\ quotes: "2e70726f6d6f2e6d61747269782e74776f6c696e65733e68322e64696666.20160107-145147.4123.png"
 			var matchFunction = new Func<string, bool>(i => Regex.IsMatch(i, @"\\[a-zA-Z0-9]*.\d{8}-\d{6}.\d{4}.png", RegexOptions.Compiled | RegexOptions.IgnoreCase));
 
 			var files = Directory.GetFiles(Environment.ImageStorePath);
@@ -79,13 +79,5 @@ namespace PDiffy.Data.Stores
 			}
 
 		}
-	}
-
-	public interface IImageStore
-	{
-		string Save(System.Drawing.Image image, string name, string type);
-		string[] Get(string name, string imageType);
-		void DeleteAll();
-		void Delete(string name, string[] imageTypes);
 	}
 }

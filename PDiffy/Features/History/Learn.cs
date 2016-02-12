@@ -46,7 +46,7 @@ namespace PDiffy.Features.History
 				{
 					Name = message.Name,
 					CreatedDate = message.CreatedDate,
-					ImagePath = _imageStore.Save(new Bitmap(differenceImage.ImagePath), message.Name + "." + Environment.LearnId)
+					ImagePath = _imageStore.Save(new Bitmap(differenceImage.ImagePath), message.Name, Environment.LearnId)
 				});
 			}
 		}

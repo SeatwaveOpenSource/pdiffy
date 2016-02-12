@@ -18,7 +18,7 @@
 				<a href="@image.ImageString"><img src="@image.ImageString" alt="originalHistoricalImage" /></a>
 				@*TODO this is my own super advanced feature switch
 						<div class="controls">
-						<a class="btn align-center" href="#@Model.Page.Name">Learn</a>
+						<a class="btn align-center" href="#@Model.ImageComparison.Name">Learn</a>
 					</div>*@
 				<div id="@Model.Name" class="modalDialog">
 					<div class="align-center text-align-center">
@@ -26,7 +26,7 @@
 						<h3>Learn Difference for @Model.Name</h3>
 						<p>Warning! Read this!</p>
 						<p>This will mark this difference so that future differences with this name will not produce the same difference again and will instead be automatically approved.</p>
-						@Html.ActionLink("Confirm and help create Skynet", "Learn", "Differences", new { name = Model.Name, createdDate = image.CreatedDate }, new { @class = "btn" })
+						@Html.ActionLink("Confirm and help create Skynet", "Learn", "History", new { name = Model.Name, createdDate = image.CreatedDate }, new { @class = "btn" })
 					</div>
 				</div>
 			</div>

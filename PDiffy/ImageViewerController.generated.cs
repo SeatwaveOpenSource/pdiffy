@@ -23,15 +23,12 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace PDiffy.Features.Error
+namespace PDiffy.Features.ImageViewer
 {
-    public partial class ErrorController
+    public partial class ImageViewerController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ErrorController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected ErrorController(Dummy d) { }
+        protected ImageViewerController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -61,13 +58,13 @@ namespace PDiffy.Features.Error
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ErrorController Actions { get { return MVC.Error; } }
+        public ImageViewerController Actions { get { return MVC.ImageViewer; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Error";
+        public readonly string Name = "ImageViewer";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Error";
+        public const string NameConst = "ImageViewer";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -75,15 +72,11 @@ namespace PDiffy.Features.Error
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Http404 = "Http404";
-            public readonly string Http500 = "Http500";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Http404 = "Http404";
-            public const string Http500 = "Http500";
         }
 
 
@@ -97,46 +90,14 @@ namespace PDiffy.Features.Error
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _Ascii404 = "_Ascii404";
-                public readonly string _Ascii500 = "_Ascii500";
-                public readonly string _404 = "404";
-                public readonly string _500 = "500";
-                public readonly string Error = "Error";
             }
-            public readonly string _Ascii404 = "~/Features/Error/_Ascii404.cshtml";
-            public readonly string _Ascii500 = "~/Features/Error/_Ascii500.cshtml";
-            public readonly string _404 = "~/Features/Error/404.cshtml";
-            public readonly string _500 = "~/Features/Error/500.cshtml";
-            public readonly string Error = "~/Features/Error/Error.scss";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_ErrorController : PDiffy.Features.Error.ErrorController
+    public partial class T4MVC_ImageViewerController : PDiffy.Features.ImageViewer.ImageViewerController
     {
-        public T4MVC_ErrorController() : base(Dummy.Instance) { }
-
-        [NonAction]
-        partial void Http404Override(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Http404()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Http404);
-            Http404Override(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void Http500Override(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Http500()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Http500);
-            Http500Override(callInfo);
-            return callInfo;
-        }
+        public T4MVC_ImageViewerController() : base(Dummy.Instance) { }
 
     }
 }

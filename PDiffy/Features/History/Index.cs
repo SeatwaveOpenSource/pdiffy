@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
@@ -22,12 +23,16 @@ namespace PDiffy.Features.History
 		public class Query : IAsyncRequest<Result>
 		{
 			public string Name { get; set; }
+			public string Page { get; set; }
+			public string Site { get; set; }
 		}
 
 		public class Result
 		{
 			public IEnumerable<HistoricalImage> DifferenceImages { get; set; }
 			public string Name { get; set; }
+			public string Page { get; set; }
+			public string Site { get; set; }
 			public DateTime? LastComparisonDate { get; set; }
 			public bool ComparisonStillValid { get; set; }
 			public bool HumanComparisonRequired { get; set; }
@@ -44,14 +49,16 @@ namespace PDiffy.Features.History
 
 			public async Task<Result> Handle(Query message)
 			{
-				var page = Data.Biggy.PageList.Single(x => x.Name == message.Name);
-
+				var comparison = Data.Biggy.ImageComparisons.Single(x => x.Name == message.Name && x.Page == message.Page && x.Site == message.Site);
+				
 				var result = new Result
 				{
-					Name = page.Name,
-					LastComparisonDate = page.LastComparisonDate,
-					ComparisonStillValid = page.ComparisonStillValid,
-					HumanComparisonRequired = page.HumanComparisonRequired,
+					Name = comparison.Name,
+					Page = comparison.Page,
+					Site = comparison.Site,
+					LastComparisonDate = comparison.LastComparisonDate,
+					ComparisonStillValid = comparison.ComparisonStillValid,
+					HumanComparisonRequired = comparison.HumanComparisonRequired,
 					DifferenceImages = _imageStore.Get(message.Name, Environment.DifferenceId).Select(x => new HistoricalImage(x))
 				};
 

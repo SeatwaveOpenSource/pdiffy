@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Drawing;
 using Machine.Fakes;
 using Machine.Specifications;
 using PDiffy.Features.Shared;
+using PDiffy.Features.Shared.Libraries;
 
 namespace PDiffy.Tests
 {
@@ -75,7 +76,7 @@ namespace PDiffy.Tests
 			result.Message.ShouldEqual("one or more image might be too large");
 
 		Because of = () =>
-			result = Catch.Exception((Action) (() => Subject.Compare(new Bitmap(5000, 5000), new Bitmap(5000, 5000))));
+			result = Catch.Exception((Action) (() => Subject.Compare(new Bitmap(2001, 2000), new Bitmap(2001, 2000))));
 
 		static Exception result;
 	}
@@ -182,4 +183,22 @@ namespace PDiffy.Tests
 
 		static Bitmap result;
 	}
+<<<<<<< HEAD
+=======
+
+	[Subject(typeof(ImageDiffTool))]
+	class When_creating_difference_image_and_the_images_for_comparison_are_large_in_size : WithSubject<ImageDiffTool>
+	{
+		It should_throw_a_format_exception = () =>
+			result.ShouldBeOfExactType<FormatException>();
+
+		It should_throw_an_exception_with_message_one_or_more_image_might_be_too_large = () =>
+			result.Message.ShouldEqual("one or more image might be too large");
+
+		Because of = () =>
+			result = Catch.Exception((Action) (() => Subject.CreateDifferenceImage(new Bitmap(2001, 2000), new Bitmap(2001, 2000))));
+
+		static Exception result;
+	}
+>>>>>>> master
 }

@@ -2,6 +2,7 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using PDiffy.Features.Shared;
+using PDiffy.Features.Shared.Libraries;
 
 namespace PDiffy.Infrastructure.Installers
 {

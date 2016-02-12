@@ -1,0 +1,79 @@
+﻿@model IList<PDiffy.Features.TextDifferences.Index.Model>
+
+@{
+	Layout = "~/Features/Shared/_Layout.cshtml";
+}
+@section Styles {<link href="~/Styles/Differences.css" rel="stylesheet" />}
+@section Scripts {
+	<script src="~/Scripts/Differences.generated.js" type="text/javascript"></script> }
+
+<div class="page-container align-center text-align-center">
+	@foreach (var textComparison in Model.Reverse())
+	{
+		<div class="page-object align-center text-align-center">
+			@{ var values = new { name = textComparison.Name, page = textComparison.Page, site = textComparison.Site }; }
+
+			<h3>@textComparison.Name</h3>
+			<span>@textComparison.Site</span> | <span>@textComparison.Page</span>
+
+			@if (textComparison.HumanComparisonRequired)
+			{ <p class="comparison">@textComparison.LastComparisonDate</p> }
+			else if (textComparison.ComparisonStillValid)
+			{ <p class="comparison valid">@textComparison.LastComparisonDate</p> }
+			else
+			{ <p class="comparison invalid">@textComparison.LastComparisonDate</p>}
+
+			<div class="texts">
+				<div class="original-text">
+					<p class="pre-wrap-white-space">@textComparison.OriginalText</p>
+
+				</div>
+				@if (textComparison.ComparisonExists)
+				{
+					<div class="comparison-text">
+						<p class="pre-wrap-white-space">@textComparison.ComparisonText</p>
+					</div>
+				}
+				<div class="differences-text">
+					<p>@Html.Raw(Server.HtmlDecode(textComparison.DifferenceText.Replace("&amp;para;", string.Empty)))</p>
+				</div>
+			</div>
+
+			<div class="controls">
+				@if (textComparison.HumanComparisonRequired)
+				{
+					@Html.ActionLink("Approve Difference", "Approve", "TextDifferences", values, new { @class = "btn" })
+				}
+
+				<a class="btn align-center" href="@Url.Action("Index", "History", values)">History</a>
+
+				<a class="btn align-center" href="#@textComparison.Name">Delete</a>
+			</div>
+			<div id="@textComparison.Name" class="modalDialog">
+				<div class="align-center text-align-center">
+					<a href="#closedModal" title="Close" class="close">X</a>
+
+					<h3>Delete @textComparison.Name</h3>
+					<p>Warning! Read this!</p>
+					<p>This will delete this comparison and the history for it.</p>
+					@Html.ActionLink("#$@&! the police", "Delete", values, new { @class = "btn danger" })
+				</div>
+			</div>
+		</div>
+	}
+	<br />
+	<br />
+	@if (Model.Any()) {
+		<a class="btn danger align-center" href="#deleteAll">Delete All</a>
+		<div id="deleteAll" class="modalDialog">
+			<div class="align-center text-align-center">
+				<a href="#closedModal" title="Close" class="close">X</a>
+
+				<h3>Delete All</h3>
+				<p>Warning! Read this!</p>
+				<p>This will delete all pages and all history.</p>
+				@Html.ActionLink("#$@&! the police", "DeleteAll", new { deleteAll = true }, new { @class = "btn danger" })
+			</div>
+		</div>
+	}
+</div>

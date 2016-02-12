@@ -25,7 +25,7 @@ using System.Web.Routing;
 using T4MVC;
 namespace T4MVC
 {
-    public class SharedController
+    public class ImageComparisonsController
     {
 
         static readonly ViewsClass s_views = new ViewsClass();
@@ -38,29 +38,6 @@ namespace T4MVC
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _AsciiBanner = "_AsciiBanner";
-                public readonly string _Layout = "_Layout";
-                public readonly string _ModalExample = "_ModalExample";
-                public readonly string Buttons = "Buttons";
-                public readonly string Modals = "Modals";
-                public readonly string Shared = "Shared";
-            }
-            public readonly string _AsciiBanner = "~/Features/Shared/_AsciiBanner.cshtml";
-            public readonly string _Layout = "~/Features/Shared/_Layout.cshtml";
-            public readonly string _ModalExample = "~/Features/Shared/_ModalExample.cshtml";
-            public readonly string Buttons = "~/Features/Shared/Buttons.scss";
-            public readonly string Modals = "~/Features/Shared/Modals.scss";
-            public readonly string Shared = "~/Features/Shared/Shared.scss";
-            static readonly _LibrariesClass s_Libraries = new _LibrariesClass();
-            public _LibrariesClass Libraries { get { return s_Libraries; } }
-            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public partial class _LibrariesClass
-            {
-                static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
-                public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
-                public class _ViewNamesClass
-                {
-                }
             }
         }
     }

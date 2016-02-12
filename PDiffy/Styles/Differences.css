@@ -1,34 +1,233 @@
+.btn {
+	background: #c0c1c2;
+	background-image: linear-gradient(to bottom, #c0c1c2, #c0c1c2);
+	border-radius: 5px;
+	font-family: Courier New;
+	color: black;
+	font-size: 15px;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+	margin: 10px 5px 10px 5px;
+}
+
+	.btn.danger:hover {
+		background: #FF4646;
+		background-image: linear-gradient(to bottom, #FF4646, #FF4646);
+	}
+
+	.btn:hover {
+		background: #21b82b;
+		background-image: linear-gradient(to bottom, #21b82b, #21b82b);
+		text-decoration: none;
+	}
+
+html {
+	font-family: Consolas, monaco, monospace;
+}
+
+body {
+	width: 100%;
+	margin: 0;
+	border: 0;
+}
+
+h1 {
+	margin-bottom: 5px !important;
+	margin-top: 5px !important;
+	-moz-word-break: break-all;
+	-o-word-break: break-all;
+	word-break: break-all;
+	font-size: 50px;
+}
+
+h2 {
+	margin-bottom: 5px !important;
+	-moz-word-break: break-all;
+	-o-word-break: break-all;
+	word-break: break-all;
+}
+
+h3 {
+	margin-bottom: 5px !important;
+	-moz-word-break: break-all;
+	-o-word-break: break-all;
+	word-break: break-all;
+}
+
+a {
+	text-decoration: none;
+}
+
+i {
+	font-style: normal;
+	background-color: #008b8b;
+	margin: 30px;
+	padding: 5px 10px;
+	display: inline-block;
+	border-radius: 100px;
+	box-shadow: 0px 0px 2px #888;
+}
+
+button {
+	cursor: pointer;
+}
+
+.page-title {
+	margin: 10px;
+	width: 200px;
+}
+
+.page-container {
+	width: 1000px;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
+.align-center {
+	margin: auto;
+}
+
+.error-red {
+	color: #ff4848;
+}
+
+.header {
+	margin-bottom: 30px;
+	width: 1000px;
+}
+
+.footer {
+	width: 1000px;
+}
+
+.logo {
+	height: 250px;
+	margin-top: 10px;
+}
+
+.modalDialog {
+	display: none;
+	-ms-opacity: 0;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #000000;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 99999;
+	pointer-events: none;
+}
+
+	.modalDialog:target {
+		display: block;
+		-ms-opacity: 1;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.modalDialog > div {
+		width: 400px;
+		position: relative;
+		margin: 10% auto;
+		padding: 5px 20px 13px 20px;
+		border-radius: 7px;
+		background: #ffffff;
+	}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 7px;
+}
+
+	.close:hover {
+		background: #FF4646;
+	}
+
 .difference-image {
-  height: 10%;
-  width: 32.5%;
-  background-color: #C0C0C0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
-  border: solid black 1px;
-  background-size: 10px 10px; }
+	height: 10%;
+	width: 32.5%;
+	background-color: #C0C0C0;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
+	border: solid black 1px;
+	background-size: 10px 10px;
+}
 
 .historical-difference-container {
-  width: 32.5%;
-  display: inline-block; }
+	width: 32.5%;
+	display: inline-block;
+}
 
-.historical-difference-container img {
-  width: 100%;
-  background-color: #C0C0C0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
-  border: solid black 1px;
-  background-size: 10px 10px; }
+	.historical-difference-container img {
+		width: 100%;
+		background-color: #C0C0C0;
+		background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
+		border: solid black 1px;
+		background-size: 10px 10px;
+	}
 
 .page-object {
-  background-color: white;
-  border: 1px dashed darkgray; }
+	background-color: white;
+	border: 1px dashed darkgray;
+}
 
 .controls {
-  padding: 20px 0; }
+	padding: 20px 0;
+}
 
 .comparison {
-  background-color: #00ace6; }
+	background-color: #00ace6;
+}
 
-.comparison.valid {
-  background-color: #21b82b; }
+	.comparison.valid {
+		background-color: #21b82b;
+	}
 
-.comparison.invalid {
-  background-color: #A0A0A0; }
+	.comparison.invalid {
+		background-color: #A0A0A0;
+	}
+
+div.original-text {
+	display: inline-block;
+	position: relative;
+	left: 0;
+	width: 49%;
+	background-color: #f0f0f0;
+}
+
+div.comparison-text {
+	display: inline-block;
+	position: relative;
+	left: 0;
+	width: 49%;
+	background-color: #f0f0f0;
+}
+
+div.differences-text {
+	display: block;
+	background-color: #f0f8f0;
+}
+
+.pre-wrap-white-space {
+	white-space: pre-wrap;
+}

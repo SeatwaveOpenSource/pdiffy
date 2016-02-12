@@ -140,8 +140,7 @@
     </None>
     <Content Include="Content\logo.png" />
     <Content Include="Features\Error\Error.scss" />
-    <None Include="Features\Shared\Differences.scss" />
-    <Content Include="Features\Differences\Differences.js" />
+    <Content Include="Features\ImageDifferences\ImageDifferences.js" />
     <Content Include="Features\History\Components\Description.js" />
     <Content Include="Features\History\History.js" />
     <Content Include="Features\Setup\Index.cshtml">
@@ -151,10 +150,13 @@
     <None Include="Features\Shared\Buttons.scss" />
     <None Include="Features\Shared\Modals.scss" />
     <None Include="Features\Shared\Shared.scss" />
+    <Content Include="Features\TextDifferences\TextDifferences.js" />
     <Content Include="Global.asax" />
-    <Content Include="Features\Differences\Differences.scss" />
+    <Content Include="Features\ImageDifferences\ImageDifferences.scss" />
     <Content Include="Infrastructure\FrontEndConfiguration\package.json" />
     <Content Include="Infrastructure\FrontEndConfiguration\excluded.features.js" />
+    <Content Include="Features\TextDifferences\TextDifferences.scss" />
+    <Content Include="Features\TextDifferences\Index.cshtml" />
     <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Infrastructure\FrontEndConfiguration\gulpfile.js" />
     <Content Include="Infrastructure\FrontEndConfiguration\paths.js" />
@@ -177,45 +179,58 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Data\Biggy.cs" />
-    <Compile Include="DifferencesController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Data\Stores\IImageStore.cs" />
+    <Compile Include="Data\TextComparison.cs" />
     <Compile Include="ErrorController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Features\Differences\Approve.cs" />
-    <Compile Include="Features\Differences\Delete.cs" />
-    <Compile Include="Features\Differences\Index.cs" />
-    <Compile Include="Features\Differences\DifferencesController.cs" />
+    <Compile Include="Features\ImageDifferences\Approve.cs" />
+    <Compile Include="Features\ImageDifferences\Delete.cs" />
+    <Compile Include="Features\ImageDifferences\Index.cs" />
+    <Compile Include="Features\ImageDifferences\ImageDifferencesController.cs" />
     <Compile Include="Features\History\Index.cs" />
     <Compile Include="Data\KnownImage.cs" />
     <Compile Include="Features\History\Learn.cs" />
     <Compile Include="Features\History\HistoryController.cs" />
-    <Compile Include="Features\Image\DifferenceImage.cs" />
-    <Compile Include="Features\Image\ComparisonImage.cs" />
-    <Compile Include="Features\Image\ImageController.cs">
+    <Compile Include="Features\ImageViewer\DifferenceImage.cs" />
+    <Compile Include="Features\ImageViewer\ComparisonImage.cs" />
+    <Compile Include="Features\ImageViewer\ImageViewerController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Features\Image\OriginalImage.cs" />
-    <Compile Include="Features\Page\Image.cs" />
-    <Compile Include="Data\Page.cs" />
+    <Compile Include="Features\ImageViewer\OriginalImage.cs" />
+    <Compile Include="Features\Shared\ApiRequestBody.cs" />
+    <Compile Include="Features\TextComparisons\TextComparisonsController.cs" />
+    <Compile Include="Features\TextComparisons\Text.cs" />
+    <Compile Include="Features\ImageComparisons\Image.cs" />
+    <Compile Include="Data\ImageComparison.cs" />
     <Compile Include="Features\Error\ErrorController.cs" />
-    <Compile Include="Features\Page\PageController.cs" />
-    <Compile Include="Features\Page\WebImage.cs" />
+    <Compile Include="Features\ImageComparisons\ImageComparisonsController.cs" />
+    <Compile Include="Features\ImageComparisons\WebImage.cs" />
     <Compile Include="Features\Setup\SetupController.cs" />
-    <Compile Include="Features\Shared\ImageDiffTool.cs" />
+    <Compile Include="Features\Shared\Libraries\DiffMatchPatch.cs" />
+    <Compile Include="Features\Shared\Libraries\ImageDiffTool.cs" />
+    <Compile Include="Features\TextDifferences\Approve.cs" />
+    <Compile Include="Features\TextDifferences\DeleteAll.cs" />
+    <Compile Include="Features\TextDifferences\Delete.cs" />
+    <Compile Include="Features\TextDifferences\TextDifferencesController.cs" />
+    <Compile Include="Features\TextDifferences\Index.cs" />
     <Compile Include="HistoryController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="ImageController.generated.cs">
+    <Compile Include="ImageComparisonsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageDifferencesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageViewerController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Environment.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Features\History\HistoricalImage.cs" />
-    <Compile Include="Data\Stores\ImageStore.cs" />
-    <Compile Include="Features\Page\Status.cs" />
+    <Compile Include="Data\Stores\FileImageStore.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,9 +244,6 @@
     <Compile Include="Infrastructure\WebApiResolver\WindsorDependencyResolver.cs" />
     <Compile Include="Infrastructure\Installers\ControllerInstaller.cs" />
     <Compile Include="Infrastructure\Installers\ToolInstallers.cs" />
-    <Compile Include="PageController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quarks\IEnumerableExtensions\ForEach.cs" />
     <Compile Include="Quarks\ImageExtensions\ToByteArray.cs" />
@@ -246,6 +258,12 @@
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TextComparisonsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TextDifferencesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -267,7 +285,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Features\Differences\Index.cshtml" />
+    <Content Include="Features\ImageDifferences\Index.cshtml" />
     <Content Include="Features\Shared\_Layout.cshtml" />
     <Content Include="Features\Shared\_AsciiBanner.cshtml" />
     <Content Include="Features\Error\404.cshtml" />
@@ -297,7 +315,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\MSBuild.Microsoft.VisualStudio.Web.targets.12.0.4\tools\VSToolsPath\WebApplications\Microsoft.WebApplication.targets" Condition="true" />
+  <Import Project="..\packages\MSBuild.Microsoft.VisualStudio.Web.targets.12.0.4\tools\VSToolsPath\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('..\packages\MSBuild.Microsoft.VisualStudio.Web.targets.12.0.4\tools\VSToolsPath\WebApplications\Microsoft.WebApplication.targets')" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
   </Target>

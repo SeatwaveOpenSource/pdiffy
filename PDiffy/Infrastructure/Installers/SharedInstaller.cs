@@ -11,7 +11,7 @@ namespace PDiffy.Infrastructure.Installers
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
 			container.Register(
-				Component.For<IImageStore>().ImplementedBy<ImageStore>().LifestyleTransient());
+				Component.For<IImageStore>().ImplementedBy<FileImageStore>().LifestyleTransient());
 		}
 	}
 }

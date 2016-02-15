@@ -1,56 +1,40 @@
 ﻿@model IList<PDiffy.Features.TextDifferences.Index.Model>
 
+@{
+	var sites = Model.GroupBy(_ => _.Site);
+	var pages = Model.GroupBy(_ => _.Page);
+}
+
 <div class="fixed-toggles">
 	<aside class="toggles">
-		@{
-			var sites = Model.GroupBy(_ => _.Site);
-			var pages = Model.GroupBy(_ => _.Page);
-
-			if (Model.Count > 0)
-			{
-				<span>@Model.Count items compared over @sites.Count() sites and @pages.Count() pages.</span>
-			}
-			else
-			{
-				<span>No text comparisons available.</span>
-			}
-		}
-	</aside>
-
-	<aside class="toggles">
 		<div>
-			<input id="OnlyDifferences" type="radio" name="highLevelFilter" value="" checked>
+			<input id="OnlyDifferences" type="radio" name="radioFilters" value="" checked>
 			<label for="OnlyDifferences">Only Differences</label>
 		</div>
 		<div>
-			<input id="OnlySimilarities" type="radio" name="highLevelFilter" value="">
-			<label for="OnlySimilarities">Only Similarities (why?)</label>
-		</div>
-		<div>
-			<input id="ShowEverything" type="radio" name="highLevelFilter" value="">
+			<input id="ShowEverything" type="radio" name="radioFilters" value="">
 			<label for="ShowEverything">Show everything</label>
 		</div>
 	</aside>
-
 	<aside class="toggles">
 		@foreach (var site in sites)
 		{
 			<div>
-				<input id="@site.Key.Replace(" ","__")" toggles="site" type="checkbox" class="input-toggle" />
+				<input id="@site.Key.Replace(" ","__")" toggles="site" type="checkbox" class="input-toggle" checked/>
 				<label for="@site.Key.Replace(" ", "__")">@string.Format("{0} ({1})", site.Key, @Model.Count(_ => _.Site == site.Key))</label>
 			</div>
 		}
 	</aside>
-
 	<aside class="toggles">
-
 		@foreach (var page in pages)
 		{
 			<div>
 				<input id="cmn-toggle-@page.Key.Replace(" ", "__")" toggles="page" type="checkbox" class="input-toggle" />
-				<label for="cmn-toggle-@page.Key.Replace(" ", "__")">@string.Format("{0} ({1})", page.Key, @Model.Count(_ => _.Page == page.Key))</label>
+				<label for="cmn-toggle-@page.Key.Replace(" ", "__")">@page.Key</label>
 			</div>
 		}
 	</aside>
-
+	<aside class="toggles">
+		<span>@Model.Count elements compared.</span>
+	</aside>
 </div>

@@ -66,7 +66,7 @@ button {
   width: 200px; }
 
 .page-container {
-  width: 1000px; }
+  width: 60%; }
 
 .text-align-center {
   text-align: center; }
@@ -138,28 +138,26 @@ button {
 .close:hover {
   background: #FF4646; }
 
-.difference-image {
-  height: 10%;
-  width: 32.5%;
-  background-color: #C0C0C0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
-  border: solid black 1px;
-  background-size: 10px 10px; }
-
 .historical-difference-container {
   width: 32.5%;
   display: inline-block; }
 
-.historical-difference-container img {
-  width: 100%;
-  background-color: #C0C0C0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
-  border: solid black 1px;
-  background-size: 10px 10px; }
-
 .page-object {
   background-color: white;
-  border: 1px dashed darkgray; }
+  border: 1px solid gray;
+  margin-bottom: 10px; }
+
+.page-object-header {
+  width: 100%;
+  text-align: left;
+  background-color: lightblue;
+  padding: 3px;
+  box-sizing: border-box; }
+
+.page-object-body {
+  display: table;
+  width: 100%;
+  border-top: 1px dotted gray; }
 
 .controls {
   padding: 20px 0; }
@@ -173,32 +171,49 @@ button {
 .comparison.invalid {
   background-color: #A0A0A0; }
 
+div.original-text,
+div.comparison-text,
+div.differences-text {
+  display: table-cell;
+  width: 33%;
+  padding: 10px; }
+
 div.original-text {
-  display: inline-block;
-  position: relative;
-  left: 0;
-  width: 49%;
   background-color: #f0f0f0; }
 
 div.comparison-text {
-  display: inline-block;
-  position: relative;
-  left: 0;
-  width: 49%;
   background-color: #f0f0f0; }
 
 div.differences-text {
-  display: block;
-  background-color: #f0f8f0; }
+  background-color: #f0f8f0;
+  font-style: italic; }
 
 .pre-wrap-white-space {
   white-space: pre-wrap; }
 
 div.fixed-toggles {
-  position: fixed; }
+  position: fixed;
+  width: 20%; }
 
 aside.toggles {
   float: left;
   padding-left: 15px;
   padding-bottom: 15px;
   clear: both; }
+
+.overflow-ellipses {
+  vertical-align: bottom;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1em; }
+
+.overflow-ellipses:hover {
+  vertical-align: bottom;
+  overflow: visible; }
+
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }

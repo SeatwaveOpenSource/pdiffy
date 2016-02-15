@@ -1,0 +1,5 @@
+language: csharp
+solution: PDiffy.sln
+
+script:
+  - ./pt.bat ci

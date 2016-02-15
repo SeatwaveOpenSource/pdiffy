@@ -1,5 +1,5 @@
 
-# P Diffy
+# P Diffy [![Build status](https://ci.appveyor.com/api/projects/status/ssokmy3420v2rrj4?svg=true&style=flat-square)](https://ci.appveyor.com/project/masduo/pdiffy)
 
 ## A perceptual difference tool for image and text comparisons
 

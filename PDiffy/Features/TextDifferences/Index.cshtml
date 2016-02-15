@@ -13,7 +13,7 @@
 @Html.Partial("Partials/_FilterToggles", Model)
 
 <div class="page-container align-center text-align-center">
-	@foreach (var textComparison in Model.Reverse())
+	@foreach (var textComparison in Model.OrderBy(_=>_.Site).ThenBy(_=>_.Page))
 	{
 		@Html.Partial("Partials/_Comparison", textComparison)
 	}

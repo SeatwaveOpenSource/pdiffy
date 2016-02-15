@@ -2,45 +2,29 @@
 @import "../Shared/Shared.scss";
 @import "../Shared/Modals.scss";
 
-.difference-image {
-	height: 10%;
-	width: 32.5%;
-	background-color: #C0C0C0;
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
-	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	background-image: -moz-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	background-image: -ms-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	background-image: -o-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	background-image: linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	border: solid black 1px;
-	-webkit-background-size: 10px 10px;
-	-moz-background-size: 10px 10px;
-	background-size: 10px 10px;
-}
-
 .historical-difference-container {
 	width: 32.5%;
 	display: inline-block;
 }
 
-.historical-difference-container img {
-	width: 100%;
-	background-color: #C0C0C0;
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
-	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	background-image: -moz-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	background-image: -ms-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	background-image: -o-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	background-image: linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
-	border: solid black 1px;
-	-webkit-background-size: 10px 10px;
-	-moz-background-size: 10px 10px;
-	background-size: 10px 10px;
-}
-
 .page-object {
 	background-color: white;
-	border: 1px dashed darkgray;
+	border: 1px solid gray;
+	margin-bottom: 10px;
+}
+
+.page-object-header {
+	width: 100%;
+	text-align: left;
+	background-color: lightblue;
+	padding: 3px;
+	box-sizing: border-box;
+}
+
+.page-object-body {
+	display: table;
+	width: 100%;
+	border-top: 1px dotted gray;
 }
 
 .controls {
@@ -59,25 +43,25 @@
 	background-color: #A0A0A0;
 }
 
+div.original-text,
+div.comparison-text,
+div.differences-text {
+	display: table-cell;
+	width: 33%;
+	padding: 10px;
+}
+
 div.original-text {
-	display: inline-block;
-	position: relative;
-	left: 0;
-	width: 49%;
 	background-color: #f0f0f0;
 }
 
 div.comparison-text {
-	display: inline-block;
-	position: relative;
-	left: 0;
-	width: 49%;
 	background-color: #f0f0f0;
 }
 
 div.differences-text {
-	display: block;
 	background-color: #f0f8f0;
+	font-style: italic;
 }
 
 .pre-wrap-white-space {
@@ -86,6 +70,7 @@ div.differences-text {
 
 div.fixed-toggles {
 	position: fixed;
+	width: 20%;
 }
 
 aside.toggles {
@@ -93,4 +78,25 @@ aside.toggles {
 	padding-left: 15px;
 	padding-bottom: 15px;
 	clear: both;
+}
+
+.overflow-ellipses {
+	vertical-align: bottom;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 1em;
+}
+
+.overflow-ellipses:hover {
+	vertical-align: bottom;
+	overflow: visible;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
 }

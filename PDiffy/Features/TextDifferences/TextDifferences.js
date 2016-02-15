@@ -11,7 +11,7 @@ Filter.prototype.bindToggleButtons = function () {
 	for (var i = 0; i < toggles.length; i++)
 		toggles[i].onclick = function () { that.filter(); };
 
-	var additionalToggles = document.getElementsByName("highLevelFilter");
+	var additionalToggles = document.getElementsByName('radioFilters');
 	for (i = 0; i < additionalToggles.length; i++)
 		additionalToggles[i].onclick = function () { that.filter(); };
 }
@@ -30,11 +30,11 @@ Filter.prototype.filter = function () {
 	for (var i = 0; i < siteSpans.length; i++) {
 		var siteSpan = siteSpans[i];
 		var pageSpan = siteSpan.nextElementSibling;
-		var parentElement = siteSpan.parentElement;
-		parentElement.style.display = 'none';
+		var parentObjectBody = siteSpan.parentElement.parentElement.parentElement; //have to admit hate this, but then don't want to use jquery. revisit later.
+		parentObjectBody.style.display = 'none';
 
 		if (checkedSites.length == 0 && checkedPages.length == 0) {
-			parentElement.style.display = 'none';
+			parentObjectBody.style.display = 'none';
 		} else {
 			var inSites = checkedSites.indexOf(siteSpan.innerText) >= 0;
 			var inPages = checkedPages.indexOf(pageSpan.innerText) >= 0;
@@ -42,7 +42,7 @@ Filter.prototype.filter = function () {
 			if (inSites && inPages ||
 				inSites && checkedPages.length == 0 ||
 				inPages && checkedSites.length == 0) {
-				parentElement.style.display = 'block';
+				parentObjectBody.style.display = 'block';
 			}
 		}
 	}
@@ -51,22 +51,13 @@ Filter.prototype.filter = function () {
 }
 
 Filter.prototype.applyAdditionalFilters = function () {
-	var selectedRadio = document.querySelectorAll('input[name=highLevelFilter]:checked')[0].id;
+	var selectedRadio = document.querySelectorAll('input[name=radioFilters]:checked')[0].id;
 	if (selectedRadio == "OnlyDifferences") {
-		//only differences
-		var shownComparisons = document.querySelectorAll('div.page-object[style="display: block;"]>p.comparison.invalid');
+		var shownComparisons = document.querySelectorAll('div.page-object[style="display: block;"] span.comparison.invalid');
 		for (var j = 0; j < shownComparisons.length; j++)
-			shownComparisons[j].parentElement.style.display = 'none';
+			shownComparisons[j].parentElement.parentElement.parentElement.style.display = 'none';
 
-	} else if (selectedRadio == "OnlySimilarities") {
-		//only similarities
-		shownComparisons = document.querySelectorAll('div.page-object[style="display: block;"]>p.comparison.valid, div.page-object[style="display: block;"]>p.comparison.human-comparison-required');
-		for (var j = 0; j < shownComparisons.length; j++)
-			shownComparisons[j].parentElement.style.display = 'none';
-	}
-	else if (selectedRadio == "ShowEverything") {
-		//show everything
-	}
+	} else if (selectedRadio == "ShowEverything") { }
 }
 
 Filter.prototype.getInputTexts = function (toggle) {
@@ -80,3 +71,4 @@ Filter.prototype.getInputTexts = function (toggle) {
 }
 
 var theFilter = new Filter();
+theFilter.filter();

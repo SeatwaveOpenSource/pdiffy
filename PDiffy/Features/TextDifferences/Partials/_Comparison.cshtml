@@ -1,43 +1,42 @@
-﻿@model PDiffy.Features.TextDifferences.Index.Model
+﻿@using System.Globalization
+@model PDiffy.Features.TextDifferences.Index.Model
 
-@{ var textComparison = Model; }
+@{
+	var textComparison = Model;
+	var comparison_class = (textComparison.HumanComparisonRequired)
+		? "human-comparison-required"
+		: (textComparison.ComparisonStillValid)
+			? "valid"
+			: "invalid";
+}
 
-<div class="page-object align-center text-align-center" style="display:none;">
-	@{ var values = new { name = textComparison.Name, page = textComparison.Page, site = textComparison.Site }; }
-
-	<h3>@textComparison.Name</h3>
-	<span class="site">@textComparison.Site</span> | <span class="page">@textComparison.Page</span>
-
-	@if (textComparison.HumanComparisonRequired)
-	{
-		<p class="comparison human-comparison-required">@textComparison.LastComparisonDate</p>
-	}
-	else if (textComparison.ComparisonStillValid)
-	{
-		<p class="comparison valid">@textComparison.LastComparisonDate</p>
-	}
-	else
-	{
-		<p class="comparison invalid">@textComparison.LastComparisonDate</p>
-	}
-
-	<div class="texts">
-		<div class="original-text">
-			<p class="pre-wrap-white-space">@textComparison.OriginalText</p>
-
+<div class="page-object text-align-left" style="display:none;">
+	<div class="page-object-header">
+		<div class="float-left">
+			<span class="site">@textComparison.Site</span> | <span class="page">@textComparison.Page</span> |&nbsp;
 		</div>
-		@if (textComparison.ComparisonExists)
-		{
-			<div class="comparison-text">
-				<p class="pre-wrap-white-space">@textComparison.ComparisonText</p>
-			</div>
-		}
-		<div class="differences-text">
+		<div class="float-right">
+			<span class="comparison @comparison_class">@string.Format("{0:ddd, MMM d - hh.mm}", textComparison.LastComparisonDate))</span>
+		</div>
+
+		<div class="overflow-ellipses">
+			<code>@textComparison.Name</code>
+		</div>
+	</div>
+	<div class="page-object-body">
+		<div style="" class="original-text">
+			<p class="pre-wrap-white-space">@textComparison.OriginalText</p>
+		</div>
+		<div style="" class="comparison-text">
+			<p class="pre-wrap-white-space">@textComparison.ComparisonText</p>
+		</div>
+		<div style="" class="differences-text">
 			<p>@Html.Raw(Server.HtmlDecode(textComparison.DifferenceText.Replace("&amp;para;", string.Empty)))</p>
 		</div>
 	</div>
 
-	<div class="controls">
+	@{ var values = new { name = textComparison.Name, page = textComparison.Page, site = textComparison.Site }; }
+	<div class="controls text-align-center">
 		@if (textComparison.HumanComparisonRequired)
 		{
 			@Html.ActionLink("Approve Difference", "Approve", "TextDifferences", values, new { @class = "btn" })
